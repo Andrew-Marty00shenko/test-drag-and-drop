@@ -1,0 +1,17 @@
+body,.wrapper, html, #root{
+    height:100% ;
+    margin: 0;
+    padding: 0;
+    background: url("../assets/images/BG.jpg")  no-repeat;
+    background-size: cover;
+}
+
+.wrapper{
+    display: flex;
+}
+
+*{
+    outline: none;
+    list-style-type: none;
+    box-sizing: border-box;
+}

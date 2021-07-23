@@ -1,0 +1,32 @@
+.header{
+    width: 100%;
+    height: 56px;
+    background: linear-gradient(180deg, rgba(185, 251, 255, 0.2) 0%, rgba(227, 220, 255, 0.2) 100%), linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 90px;
+
+    &__status{
+        display: flex;
+        padding-top: 19px;
+
+        &-icon{
+            margin-right: 10px;
+        }
+
+        span{
+            color: rgb(97, 212, 97)
+        }
+    }
+
+    &__settings{
+        display: flex;
+        padding-top: 19px;
+        cursor: pointer;
+
+        &-icon{
+            margin-right: 10px;
+        }   
+    }
+}

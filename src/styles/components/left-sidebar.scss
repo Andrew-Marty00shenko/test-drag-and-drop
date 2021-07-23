@@ -1,0 +1,110 @@
+.left-sidebar{
+    width: 96px;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(185, 251, 255, 0.2) 0%, rgba(227, 220, 255, 0.2) 100%);
+    backdrop-filter: blur(10px);
+    border-right: 2px solid #fff;
+
+    &__user-image{
+        padding-top: 77px;
+        margin: 0px 23px;
+    }
+
+    &__menu-tabs{
+        margin-top: 35px;
+
+        div{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 24px;
+            margin-right: -3px;
+            padding: 18px;
+        }
+
+        .tab-one{
+            path{
+                stroke: #565555;
+            }
+
+            &--active{
+                border-top: 1px solid #fff;
+                border-right: 4px solid#0085FF;
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.3);
+                backdrop-filter: blur(30px);
+
+                path{
+                    stroke:#0085FF;
+                }
+            }
+        }
+
+        .tab-two{
+            path{
+                stroke: #565555;
+            }
+
+            &--active{
+                border-top: 1px solid #fff;
+                border-right: 4px solid#0085FF;
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.3);
+                backdrop-filter: blur(30px);
+
+                path{
+                    stroke:#0085FF;
+                }
+            }
+        }
+
+        .tab-three{
+            path{
+                stroke: #565555;
+            }
+
+            &--active{
+                border-top: 1px solid #fff;
+                border-right: 4px solid#0085FF;
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.3);
+                backdrop-filter: blur(30px);
+
+                path{
+                    stroke:#0085FF;
+                }
+            }
+        }
+
+        .tab-four{
+            path{
+                stroke: #565555;
+            }
+
+            &--active{
+                border-top: 1px solid #fff;
+                border-right: 4px solid#0085FF;
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.3);
+                backdrop-filter: blur(30px);
+
+                path{
+                    stroke:#0085FF;
+                }
+            }
+        }
+
+        .tab-five{
+            path{
+                stroke: #565555;
+            }
+
+            &--active{
+                border-top: 1px solid #fff;
+                border-right: 4px solid#0085FF;
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.3);
+                backdrop-filter: blur(30px);
+            
+                path{
+                    stroke:#0085FF;
+                }
+            }
+        }
+    }
+}
