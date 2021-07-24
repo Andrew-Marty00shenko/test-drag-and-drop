@@ -5,7 +5,9 @@
     backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-between;
-    padding: 0px 90px;
+    padding: 0px 186px;
+    position: fixed;
+    z-index: 98;
 
     &__status{
         display: flex;

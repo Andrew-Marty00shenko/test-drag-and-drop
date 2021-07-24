@@ -8,6 +8,10 @@ body,.wrapper, html, #root{
 
 .wrapper{
     display: flex;
+
+    &__main{
+        width: 100%;
+    }
 }
 
 *{

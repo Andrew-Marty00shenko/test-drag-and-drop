@@ -4,6 +4,8 @@
     background: linear-gradient(180deg, rgba(185, 251, 255, 0.2) 0%, rgba(227, 220, 255, 0.2) 100%);
     backdrop-filter: blur(10px);
     border-right: 2px solid #fff;
+    position: fixed;
+    z-index: 99;
 
     &__user-image{
         padding-top: 77px;

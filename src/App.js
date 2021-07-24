@@ -1,9 +1,12 @@
-import { LeftSidebar, Header } from "./components"
+import { LeftSidebar, Header, Main } from "./components"
 
 const App = () => {
     return <div className="wrapper">
         <LeftSidebar />
-        <Header />
+        <div className="wrapper__main">
+            <Header />
+            <Main />
+        </div>
     </div>
 }
 
