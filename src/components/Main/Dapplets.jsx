@@ -1,27 +1,51 @@
 import { useEffect, useState, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
-import { dappletsApi } from "../../utils/api";
 import { DappletItem } from "..";
 
-const Dapplets = () => {
-    const [dapplets, setDapplets] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+const Dapplets = ({ dapplets, dappletsActions }) => {
+    const [start, setStart] = useState(0);
+    const [dappletsState, setDappletsState] = useState([]);
+    const [btnState, setBtnState] = useState(false);
+    const direction = useSelector(({ dapplets }) => dapplets.direction);
+    const dispatch = useDispatch();
 
-    const onDragEnd = useCallback(result => {
-        if (result.destination) {
+    useEffect(() => {
+        window.addEventListener("scroll", infiniteScroll);
+
+        setDappletsState(JSON.parse(localStorage.getItem("itemsState")) || []);
+
+        fetchDapplets(start, direction);
+
+        return () => window.removeEventListener("scroll", infiniteScroll);
+        //eslint-disable-next-line
+    }, [start, direction]);
+
+    const infiniteScroll = () => {
+        if (document.documentElement.scrollTop + window.innerHeight ===
+            document.documentElement.scrollHeight) {
+            setStart(start + 20);
+        }
+    };
+
+    const fetchDapplets = (numberStart, direction) => {
+        dispatch(dappletsActions.fetchDappletsData(numberStart, direction));
+    };
+
+    const onDragEnd = (result) => {
+        if (!result.destination) {
             return;
         }
 
         const items = reorder(
-            dapplets.data,
+            dapplets,
             result.source.index,
             result.destination.index
         );
 
-        setDapplets(items);
-        //eslint-disable-next-line
-    }, []);
+        dispatch(dappletsActions.setDappletsDataOnDragEnd(items));
+    };
 
     const reorder = useCallback((list, startIndex, endIndex) => {
         const result = Array.from(list);
@@ -31,13 +55,52 @@ const Dapplets = () => {
         return result;
     }, []);
 
-    useEffect(() => {
-        dappletsApi.getDapplets()
-            .then(res => {
-                setDapplets(res);
-                setIsLoading(false);
+    const onDownloadApp = (id) => {
+        if (!btnState) {
+            if (dappletsState.length !== 0) {
+                for (let i in dappletsState) {
+
+                    if (dappletsState[i].dappletId === id) {
+                        const result = {
+                            dappletId: dappletsState[i].dappletId,
+                            download: false
+                        };
+
+                        dappletsState.push(result);
+                    } else {
+                        const result = {
+                            dappletId: id,
+                            download: true
+                        };
+
+                        dappletsState.push(result);
+                    }
+                }
+            } else {
+                dappletsState.push({
+                    dappletId: id,
+                    download: true
+                });
+            }
+
+            localStorage.setItem("itemsState", JSON.stringify(dappletsState));
+
+            setBtnState(true)
+        }
+
+        else {
+            const newDappletsState = dappletsState.map(d => {
+                return {
+                    dappletId: d.dappletId,
+                    download: false
+                }
             });
-    }, []);
+
+            setBtnState(false);
+
+            localStorage.setItem("itemsState", JSON.stringify(newDappletsState));
+        }
+    }
 
     return <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="droppable">
@@ -47,17 +110,19 @@ const Dapplets = () => {
                     ref={provided.innerRef}
                 >
                     {
-                        !isLoading && dapplets.data.map((i, index) => {
+                        dapplets.map((i, index) => {
                             return <Draggable
                                 key={i.id}
                                 draggableId={i.id}
                                 index={index}
                             >
-                                {(provided, snapshot) => (
+                                {(provided) => (
                                     <DappletItem
                                         divRef={provided.innerRef}
                                         provided={provided}
                                         item={i}
+                                        onDownloadApp={onDownloadApp}
+                                        button={btnState}
                                     />
                                 )}
                             </Draggable>

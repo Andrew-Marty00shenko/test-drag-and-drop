@@ -4,3 +4,4 @@ export { default as Main } from "./Main/Main";
 export { default as SearchFields } from "./Main/SearchFields";
 export { default as Dapplets } from "./Main/Dapplets";
 export { default as DappletItem } from "./Main/DappletItem";
+export { default as Button } from "./Main/Button";
