@@ -1,0 +1,171 @@
+.right-sidebar{
+    width: 320px;
+    height: 100%;
+    padding: 20px;
+    background: linear-gradient(180deg, rgba(185, 251, 255, 0.2) 0%, rgba(227, 220, 255, 0.2) 100%);
+    backdrop-filter: blur(30px);
+    position: fixed;
+    right: 0;
+    z-index: 99;
+    border-left: 2px solid #fff;
+
+    &__close-img{
+        margin-top: 66px;
+    }
+
+    &__title{
+
+        p{
+            font-weight: 600;
+            font-size: 24px;
+            color: #2A2A2A;
+        }
+    }
+
+    &__create-list{
+
+        p{
+            font-weight: 500;
+            font-size: 16px;
+            color: #999999;
+        }
+        
+        div{
+            display: flex;
+
+            input{  
+                padding: 12px 11px;
+                width: 210px;
+                border-radius: 10px;
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.8);
+                box-shadow: 10px 10px 40px rgba(156, 185, 222, 0.36);
+                border: none;
+                margin-right: 10px;
+            }
+    
+            button{
+                padding: 13px 20px;
+                border-radius: 10px;
+                font-size: 12px;
+                background-color: #0085FF;
+                text-transform: uppercase;
+                border: none;
+                font-weight: 500;
+                color:#fff;
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__new-tag{
+        margin-top: 60px;
+        
+        p{
+            font-weight: 500;
+            font-size: 16px;
+            color: #999999;
+        }
+        
+        div{
+            display: flex;
+
+            input{  
+                padding: 12px 11px;
+                width: 210px;
+                border-radius: 10px;
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.8);
+                box-shadow: 10px 10px 40px rgba(156, 185, 222, 0.36);
+                border: none;
+                margin-right: 10px;
+            }
+    
+            button{
+                padding: 13px 20px;
+                border-radius: 10px;
+                font-size: 12px;
+                background-color: #0085FF;
+                text-transform: uppercase;
+                border: none;
+                font-weight: 500;
+                color:#fff;
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__my-tags{
+        margin-top: 60px;
+
+        p{
+            font-weight: 600;
+            font-size: 24px;
+            color: #2A2A2A;
+        }
+
+        .my-tags{
+            display: flex;
+            justify-content: space-between;
+
+            &__item{
+
+                button{
+                    border-radius: 4px;
+                    background: #5241BF;
+                    padding: 3px;
+                    color: #fff;
+                    font-weight: 500;
+                    margin-right: 4px;
+                    margin-bottom: 10px;
+                    border: none;
+                    cursor: pointer; 
+                }
+            }
+        }
+    }
+
+    &__community-tags{
+        margin-top: 60px;
+        border-bottom: 2px solid #fff;
+        padding-bottom: 30px;
+
+        p{
+            font-weight: 600;
+            font-size: 24px;
+            color: #2A2A2A;
+        }
+
+        .community-tags{
+            display: flex;
+            justify-content: space-between;
+
+            &__item{
+
+                button{
+                    border-radius: 4px;
+                    background: #41BFB0;
+                    padding: 3px;
+                    color: #fff;
+                    font-weight: 500;
+                    margin-right: 4px;
+                    margin-bottom: 10px;
+                    border: none;
+                    cursor: pointer; 
+                }
+            }
+        }
+    }
+
+    &__working{
+        margin-top: 30px;
+
+        &-header{
+            font-weight: 600;
+            font-size: 24px;
+            color: #2A2A2A; 
+        }
+
+        p{
+            color: #999999;
+        }
+    }
+}

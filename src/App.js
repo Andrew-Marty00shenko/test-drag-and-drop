@@ -1,4 +1,4 @@
-import { LeftSidebar, Header, Main } from "./components"
+import { LeftSidebar, Header, Main, RightSidebar } from "./components"
 
 const App = () => {
     return <div className="wrapper">
@@ -7,6 +7,7 @@ const App = () => {
             <Header />
             <Main />
         </div>
+        <RightSidebar />
     </div>
 }
 
