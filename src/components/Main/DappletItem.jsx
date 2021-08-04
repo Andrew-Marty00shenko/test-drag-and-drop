@@ -8,6 +8,7 @@ import DragIcon from "../../assets/images/drag-icon.svg";
 
 const DappletItem = ({ divRef, provided, item, onDownloadApp, button }) => {
     const [allTags, setAllTags] = useState([]);
+    const [open, setOpen] = useState(false);
     const selectedTags = [];
 
     useEffect(() => {
@@ -24,50 +25,92 @@ const DappletItem = ({ divRef, provided, item, onDownloadApp, button }) => {
         }
     };
 
+    const handleOpenDesc = () => {
+        setOpen(!open);
+    };
+
     return <div
         {...provided.draggableProps}
         {...provided.dragHandleProps}
         ref={divRef}
-        className="main__dapplet-item"
+        onClick={handleOpenDesc}
+        className="main__dapplet"
     >
-        <div className="main__dapplet-item__drag-icon">
-            <img src={DragIcon} alt="drag" />
+        <div className="main__dapplet-item">
+            <div className="main__dapplet-item__drag-icon">
+                <img src={DragIcon} alt="drag" />
+            </div>
+            <div className="main__dapplet-item__image">
+                <img src={`https://dapplets-hiring-api.herokuapp.com/api/v1/files/${item.icon}`} alt="item-icon" />
+            </div>
+            <div className="main__dapplet-item__info">
+                <span>
+                    {item.title}
+                </span>
+                <p>
+                    {item.address.toUpperCase()}
+                </p>
+            </div>
+            <div className="main__dapplet-item__description">
+                <p>
+                    {item.description}
+                </p>
+            </div>
+            <div className="main__dapplet-item__author">
+                <p>
+                    {item.author}
+                </p>
+            </div>
+            <div className="main__dapplet-item__tags">
+                {selectedTags?.map((t, index) => {
+                    return <button key={index} className="tag-name">
+                        {t}
+                    </button>
+                })}
+            </div>
+            <div className="main__dapplet-item__btn-download">
+                <Button
+                    itemId={item.id}
+                    onDownloadApp={onDownloadApp}
+                    button={button}
+                />
+            </div>
         </div>
-        <div className="main__dapplet-item__image">
-            <img src={`https://dapplets-hiring-api.herokuapp.com/api/v1/files/${item.icon}`} alt="item-icon" />
-        </div>
-        <div className="main__dapplet-item__info">
-            <span>
-                {item.title}
-            </span>
-            <p>
-                {item.address.toUpperCase()}
-            </p>
-        </div>
-        <div className="main__dapplet-item__description">
-            <p>
-                {item.description}
-            </p>
-        </div>
-        <div className="main__dapplet-item__author">
-            <p>
-                {item.author}
-            </p>
-        </div>
-        <div className="main__dapplet-item__tags">
-            {selectedTags?.map((t, index) => {
-                return <button key={index} className="tag-name">
-                    {t}
-                </button>
-            })}
-        </div>
-        <div className="main__dapplet-item__btn-download">
-            <Button
-                itemId={item.id}
-                onDownloadApp={onDownloadApp}
-                button={button}
-            />
-        </div>
+        {open && <div className="hide__dapplet-desc">
+            <div className="hide__dapplet-desc__item">
+                {item.text_1}
+            </div>
+            <div>
+                <div className="hide__dapplet-desc__item">
+                    {item.text_2}
+                </div>
+                <div className="hide__dapplet-desc__item">
+                    {item.text_3}
+                </div>
+                <div className="hide__dapplet-desc__item">
+                    {item.text_4}
+                </div>
+            </div>
+            <div>
+                <div className="hide__dapplet-desc__item">
+                    {item.text_5}
+                </div>
+                <div className="hide__dapplet-desc__item">
+                    {item.text_6}
+                </div>
+                <div className="hide__dapplet-desc__item">
+                    {item.text_7}
+                </div>
+            </div>
+            <div>
+                <div className="hide__dapplet-desc__item">
+                    {item.text_8}
+                </div>
+                <div className="hide__dapplet-desc__item">
+                    {item.text_9}
+                </div>
+            </div>
+        </div>}
     </div>
 }
 
