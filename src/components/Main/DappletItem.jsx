@@ -9,6 +9,7 @@ import DragIcon from "../../assets/images/drag-icon.svg";
 const DappletItem = ({ divRef, provided, item, dappletsState }) => {
     const [allTags, setAllTags] = useState([]);
     const [open, setOpen] = useState(false);
+    const [button, setButton] = useState(false);
     const selectedTags = [];
 
     useEffect(() => {
@@ -70,14 +71,17 @@ const DappletItem = ({ divRef, provided, item, dappletsState }) => {
                     </button>
                 })}
             </div>
-            <div className="main__dapplet-item__btn-download">
+            <div
+                onClick={() => setButton(!button)}
+                className="main__dapplet-item__btn-download"
+            >
                 <Button
                     itemId={item.id}
                     dappletsState={dappletsState}
                 />
             </div>
         </div>
-        {open && <div className="hide__dapplet-desc">
+        {open && !button && <div className="hide__dapplet-desc">
             <div className="hide__dapplet-desc__item">
                 {item.text_1}
             </div>

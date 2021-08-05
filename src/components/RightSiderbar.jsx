@@ -79,7 +79,7 @@ const RightSidebar = () => {
             </div>
         </div>
         <div className="right-sidebar__working">
-            <h className="right-sidebar__working-header">WORKING ON</h>
+            <h1 className="right-sidebar__working-header">WORKING ON</h1>
             <p>twitter.com</p>
             <p>twitter.com/randomusername</p>
             <p>facebook.com</p>
