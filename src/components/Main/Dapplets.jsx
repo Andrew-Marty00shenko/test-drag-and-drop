@@ -7,7 +7,6 @@ import { DappletItem } from "..";
 const Dapplets = ({ dapplets, dappletsActions }) => {
     const [start, setStart] = useState(0);
     const [dappletsState, setDappletsState] = useState([]);
-    const [btnState, setBtnState] = useState(false);
     const direction = useSelector(({ dapplets }) => dapplets.direction);
     const dispatch = useDispatch();
 
@@ -55,53 +54,6 @@ const Dapplets = ({ dapplets, dappletsActions }) => {
         return result;
     }, []);
 
-    const onDownloadApp = (id) => {
-        if (!btnState) {
-            if (dappletsState.length !== 0) {
-                for (let i in dappletsState) {
-
-                    if (dappletsState[i].dappletId === id) {
-                        const result = {
-                            dappletId: dappletsState[i].dappletId,
-                            download: false
-                        };
-
-                        dappletsState.push(result);
-                    } else {
-                        const result = {
-                            dappletId: id,
-                            download: true
-                        };
-
-                        dappletsState.push(result);
-                    }
-                }
-            } else {
-                dappletsState.push({
-                    dappletId: id,
-                    download: true
-                });
-            }
-
-            localStorage.setItem("itemsState", JSON.stringify(dappletsState));
-
-            setBtnState(true)
-        }
-
-        else {
-            const newDappletsState = dappletsState.map(d => {
-                return {
-                    dappletId: d.dappletId,
-                    download: false
-                }
-            });
-
-            setBtnState(false);
-
-            localStorage.setItem("itemsState", JSON.stringify(newDappletsState));
-        }
-    }
-
     return <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="droppable">
             {(provided) => (
@@ -121,8 +73,7 @@ const Dapplets = ({ dapplets, dappletsActions }) => {
                                         divRef={provided.innerRef}
                                         provided={provided}
                                         item={i}
-                                        onDownloadApp={onDownloadApp}
-                                        button={btnState}
+                                        dappletsState={dappletsState}
                                     />
                                 )}
                             </Draggable>

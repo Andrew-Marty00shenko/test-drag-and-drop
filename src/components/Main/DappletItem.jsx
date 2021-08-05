@@ -6,7 +6,7 @@ import { Button } from "..";
 
 import DragIcon from "../../assets/images/drag-icon.svg";
 
-const DappletItem = ({ divRef, provided, item, onDownloadApp, button }) => {
+const DappletItem = ({ divRef, provided, item, dappletsState }) => {
     const [allTags, setAllTags] = useState([]);
     const [open, setOpen] = useState(false);
     const selectedTags = [];
@@ -33,10 +33,12 @@ const DappletItem = ({ divRef, provided, item, onDownloadApp, button }) => {
         {...provided.draggableProps}
         {...provided.dragHandleProps}
         ref={divRef}
-        onClick={handleOpenDesc}
         className="main__dapplet"
     >
-        <div className="main__dapplet-item">
+        <div
+            onClick={handleOpenDesc}
+            className="main__dapplet-item"
+        >
             <div className="main__dapplet-item__drag-icon">
                 <img src={DragIcon} alt="drag" />
             </div>
@@ -71,8 +73,7 @@ const DappletItem = ({ divRef, provided, item, onDownloadApp, button }) => {
             <div className="main__dapplet-item__btn-download">
                 <Button
                     itemId={item.id}
-                    onDownloadApp={onDownloadApp}
-                    button={button}
+                    dappletsState={dappletsState}
                 />
             </div>
         </div>
