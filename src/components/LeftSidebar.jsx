@@ -2,18 +2,40 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 
+import ArrowLeftIcon from "../assets/images/arrow-left.svg";
 import UserIcon from "../assets/images/user-icon.svg";
 
 import "../styles/components/left-sidebar.scss";
 
 const LeftSidebar = () => {
     const [currentTab, setCurrentTab] = useState(0);
+    const [hideSidebar, setHideSidebar] = useState(true);
 
-    return <div className="left-sidebar">
-        <div className="left-sidebar__user-image">
+    return <div
+        onMouseEnter={() => setHideSidebar(true)}
+        className={classNames("left-sidebar", {
+            "left-sidebar--visible": hideSidebar
+        })}
+    >
+        <div
+            style={{
+                display: hideSidebar ? "flex" : "block",
+                alignItems: "center"
+            }}
+            className="left-sidebar__user-image">
             <img src={UserIcon} alt="user-icon" />
+            {hideSidebar && <div className="left-sidebar__user-name">
+                Dapplets Project
+                <img
+                    onClick={() => setHideSidebar(false)}
+                    src={ArrowLeftIcon}
+                    alt="arrow-left"
+                />
+            </div>}
         </div>
-        <div className="left-sidebar__menu-tabs">
+        <div className={classNames("left-sidebar__menu-tabs", {
+            "left-sidebar__menu-tabs--visible": hideSidebar
+        })}>
             <Link to="/dapplets"
                 onClick={() => setCurrentTab(0)}
             >
@@ -29,6 +51,9 @@ const LeftSidebar = () => {
                         <path d="M3.27002 6.95996L12 12.01L20.73 6.95996" stroke="#0085FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         <path d="M12 22.08V12" stroke="#0085FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
+                    {hideSidebar && <p style={{
+                        color: 0 === currentTab ? "#0085FF" : "#565555"
+                    }} >All Dapplets</p>}
                 </div>
             </Link>
             <Link to="/editors-choice"
@@ -41,6 +66,9 @@ const LeftSidebar = () => {
                         width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.8401 3.61012C20.3294 3.09912 19.7229 2.69376 19.0555 2.4172C18.388 2.14064 17.6726 1.99829 16.9501 1.99829C16.2276 1.99829 15.5122 2.14064 14.8448 2.4172C14.1773 2.69376 13.5709 3.09912 13.0601 3.61012L12.0001 4.67012L10.9401 3.61012C9.90843 2.57842 8.50915 1.99883 7.05012 1.99883C5.59109 1.99883 4.19181 2.57842 3.16012 3.61012C2.12843 4.64181 1.54883 6.04108 1.54883 7.50012C1.54883 8.95915 2.12843 10.3584 3.16012 11.3901L4.22012 12.4501L12.0001 20.2301L19.7801 12.4501L20.8401 11.3901C21.3511 10.8794 21.7565 10.2729 22.033 9.60547C22.3096 8.93801 22.4519 8.2226 22.4519 7.50012C22.4519 6.77763 22.3096 6.06222 22.033 5.39476C21.7565 4.7273 21.3511 4.12087 20.8401 3.61012V3.61012Z" stroke="#565555" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
+                    {hideSidebar && <p style={{
+                        color: 1 === currentTab ? "#0085FF" : "#565555"
+                    }} >Editor’s Choice</p>}
                 </div>
             </Link>
             <Link to="/essential-dapplets"
@@ -56,6 +84,9 @@ const LeftSidebar = () => {
                         <path d="M21 14H14V21H21V14Z" stroke="#565555" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         <path d="M10 14H3V21H10V14Z" stroke="#565555" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
+                    {hideSidebar && <p style={{
+                        color: 2 === currentTab ? "#0085FF" : "#565555"
+                    }} >Essential Dapplets</p>}
                 </div>
             </Link>
             <Link to="/social-networks"
@@ -71,6 +102,9 @@ const LeftSidebar = () => {
                         <path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13" stroke="#565555" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="#565555" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
+                    {hideSidebar && <p style={{
+                        color: 3 === currentTab ? "#0085FF" : "#565555"
+                    }} >Social Networks</p>}
                 </div>
             </Link>
             <Link to="/financial-dapplets"
@@ -84,6 +118,9 @@ const LeftSidebar = () => {
                         <path d="M23 6L13.5 15.5L8.5 10.5L1 18" stroke="#565555" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         <path d="M17 6H23V12" stroke="#565555" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
+                    {hideSidebar && <p style={{
+                        color: 4 === currentTab ? "#0085FF" : "#565555"
+                    }} >Financial Dapplets</p>}
                 </div>
             </Link>
         </div>
